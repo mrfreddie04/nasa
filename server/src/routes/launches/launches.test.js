@@ -3,13 +3,16 @@ const request = require("supertest");
 // const mongoose  = require("mongoose");
 const app = require("../../app");
 const { mongoConnect, mongoDisconnect } = require("../../services/mongo");
-//const { loadPlanetsData, getAllPlanets } = require("../../models/planets.model");
+const { loadPlanetsData } = require("../../models/planets.model");
+//const { loadLaunchData } = require("../../models/launches.model");
 
 describe("Launches API", () => {
   let mongo;
 
   beforeAll(async () => {
     await mongoConnect();
+    await loadPlanetsData();
+    //await loadLaunchData();    
     // mongo = await MongoMemoryServer.create();
     // const mongoUri = mongo.getUri();
   
